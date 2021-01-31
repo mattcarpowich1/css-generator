@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(theme => ({
   appBar: {
     position: 'relative',
-    backgroundColor: '#00DBDE',
-    backgroundImage: `linear-gradient(90deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+    backgroundColor: theme.palette.grey[900]
   },
   toolBar: {
     display: 'flex',

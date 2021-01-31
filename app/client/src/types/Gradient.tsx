@@ -1,4 +1,4 @@
-type Color = {
+export type Color = {
   r: number,
   g: number,
   b: number,
@@ -6,6 +6,7 @@ type Color = {
 };
 
 export type GradientValue = {
+  id: number,
   color: Color,
   stop: number
 };

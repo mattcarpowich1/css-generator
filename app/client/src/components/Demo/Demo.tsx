@@ -1,35 +1,14 @@
 import React from 'react';
 import { Paper } from '@material-ui/core';
-import useStyles from './styles';
-import { Gradient, GradientValue, generateGradientString } from '../../types/Gradient';
+import { useSelector } from 'react-redux';
+import { Gradient, generateGradientString } from '../../types/Gradient';
+import { RootState } from '../../store/root';
 import { backgroundImgUrl } from './utils';
+import useStyles from './styles';
 
 const Demo = () => {
 
-  const gv1 : GradientValue = {
-    color: {
-      r: 0,
-      g: 0,
-      b: 0,
-      a: .3
-    },
-    stop: 0
-  };
-
-  const gv2 : GradientValue = {
-    color: {
-      r: 99,
-      g: 245,
-      b: 66,
-      a: .7
-    },
-    stop: 100
-  };
-
-  const gradient : Gradient = {
-    values: [gv1, gv2],
-    angle: -50
-  };
+  const gradient = useSelector((state : RootState) => state.gradient);
 
   const classes = useStyles();
 
@@ -42,7 +21,10 @@ const Demo = () => {
   });
 
   return (
-    <Paper className={classes.paper} style={gradientStyles(gradient)}/>
+    <Paper
+      className={classes.paper}
+      style={gradientStyles(gradient)}
+    />
   );
 };
 
