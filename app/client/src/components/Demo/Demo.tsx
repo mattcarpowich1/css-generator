@@ -13,7 +13,7 @@ const Demo = () => {
   const classes = useStyles();
 
   const gradientStyles = (g: Gradient) => ({
-    backgroundImage: g.values.length > 0 ? (
+    backgroundImage: g.stops.length > 0 ? (
       `linear-gradient(${g.angle}deg, ${generateGradientString(g)}), url("${backgroundImgUrl}")`
     ) : (
       `url(${backgroundImgUrl})`

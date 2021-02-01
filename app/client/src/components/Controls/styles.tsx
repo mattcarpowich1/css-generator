@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Gradient } from '../../types/Gradient';
 
-const useStyles = (g: Gradient) => makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
     paper: {
       width: '100%',
       maxWidth: 600,
@@ -12,7 +11,7 @@ const useStyles = (g: Gradient) => makeStyles(theme => ({
       padding: `${theme.spacing(4)}px`
   }, 
   slider: {
-    
+
   }
 }));
 

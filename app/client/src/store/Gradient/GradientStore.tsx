@@ -1,64 +1,43 @@
 import {
   Color,
-  GradientValue,
   Gradient
 } from '../../types/Gradient';
 
-const gv1 : GradientValue = {
-  id: 0,
-  color: {
-    r: 0,
-    g: 0,
-    b: 0,
-    a: .3
-  },
-  stop: 0
+const c1 : Color = {
+  r: 37,
+  g: 99,
+  b: 134,
+  a: .4
 };
 
-const gv2 : GradientValue = {
-  id: 1,
-  color: {
-    r: 99,
-    g: 245,
-    b: 66,
-    a: .7
-  },
-  stop: 100
+const c2 : Color = {
+  r: 156,
+  g: 37,
+  b: 214,
+  a: .8
 };
 
 const initialState : Gradient = {
-  values: [gv1, gv2],
+  colors: [c1, c2],
+  stops: [0, 100],
   angle: 90
-};
+}
 
 type Action = {
-  type: 'UPDATE_COLOR' | 'UPDATE_STOP' | 'UPDATE_ANGLE',
+  type: 'UPDATE_STOPS' | 'UPDATE_ANGLE',
   id?: number,
   color?: Color,
-  stop?: number,
+  stops?: Array<number>,
   angle?: number
 };
 
 export const GradientReducer = (state = initialState, action: Action) => {
   switch(action.type) {
-    case 'UPDATE_COLOR': {
-      const { id, color } = action;
+    case 'UPDATE_STOPS': {
+      const { stops } = action;
       return {
         ...state,
-        values: state.values.map(v => v.id === id ? ({
-          ...v,
-          color
-        }) : v)
-      }
-    }
-    case 'UPDATE_STOP': {
-      const { id, stop } = action;
-      return {
-        ...state,
-        values: state.values.map(v => v.id === id ? ({
-          ...v,
-          stop
-        }) : v)
+        stops
       }
     }
     case 'UPDATE_ANGLE': {

@@ -12,15 +12,13 @@ export type GradientValue = {
 };
 
 export type Gradient = {
-  values: Array<GradientValue>,
+  colors: Array<Color>,
+  stops: Array<number>,
   angle: number
 };
 
-export const generateGradientString = (gradient: Gradient) => {
-  if (gradient.values.length === 0) {
-    return '';
-  }
-  return gradient.values.map((item: GradientValue) => (
-    `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, ${item.color.a}) ${item.stop}%`
-  )).join(', ');
-};
+export const generateGradientString = (gradient: Gradient) => gradient.colors
+  .map((item: Color, index : number) => (
+    `rgba(${item.r}, ${item.g}, ${item.b}, ${item.a}) ${gradient.stops[index]}%`
+  ))
+  .join(', ');
